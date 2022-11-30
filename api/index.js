@@ -4,7 +4,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 
 // module
-
+import postRoute from "./routes/post.js";
 import userRoute from "./routes/users.js";
 import authRoute from "./routes/auth.js";
 import dbConnection from "./utils/db.js";
@@ -20,6 +20,7 @@ app.use(express.json());
 // routes
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
+app.use("/api/post", postRoute);
 
 app.listen(port, () => {
   dbConnection();
