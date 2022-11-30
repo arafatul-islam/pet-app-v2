@@ -39,7 +39,48 @@ export const deletePost = async (req, res) => {
     return res.status(404).json("post not found");
   }
 };
-export const likeAPost = async (req, res) => {};
-export const dislikeAPost = async (req, res) => {};
-export const getAPost = async (req, res) => {};
-export const getTimeline = async (req, res) => {};
+export const likeAPost = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.postid);
+    if (!post.likes.includes(req.params.likerid)) {
+      const updatedPost = await post.updateOne({
+        $push: { likes: req.params.likerid },
+      });
+
+      return res.status(200).json({ message: "post liked", updatedPost });
+    } else {
+      const updatedPost = await post.updateOne({
+        $pull: { likes: req.params.likerid },
+      });
+
+      return res.status(200).json({ message: "post disliked ", updatedPost });
+    }
+  } catch (error) {
+    return res.status(404).json("post not found");
+  }
+};
+
+export const getAPost = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.postid);
+    return res.status(200).json(post);
+  } catch (error) {
+    return res.status(404).json("post not found");
+  }
+};
+// export const getTimeline = async (req, res) => {
+//   try {
+//     const currentUserPosts = await Post.find({ userId: req.body.userId });
+
+//     if (req.body.userId === req.params.profileownerid) {
+//       return res.status(200).json(currentUserPosts);
+//     } else {
+//       const friendPosts = await Promise.all(
+//         c
+//       );
+//       return res.status(200).json(friendPosts);
+//     }
+//   } catch (error) {
+//     return res.status(404).json("operation failed");
+//   }
+// };
