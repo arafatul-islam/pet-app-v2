@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Joi from 'joi'; 
+import Joi from "joi";
 
 const UserSchema = new mongoose.Schema(
   {
@@ -42,11 +42,12 @@ const UserSchema = new mongoose.Schema(
     isAdmin: {
       type: Boolean,
       default: false,
+      city: {
+        type: String,
+      },
     },
   },
   { timestamps: true }
 );
-
-
 
 export default mongoose.model("User", UserSchema);
