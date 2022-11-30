@@ -1,11 +1,10 @@
 import mongoose from "mongoose";
+import Joi from 'joi'; 
 
 const UserSchema = new mongoose.Schema(
   {
     username: {
       type: String,
-      min: 3,
-      max: 15,
       unique: true,
       required: true,
     },
@@ -13,7 +12,9 @@ const UserSchema = new mongoose.Schema(
       type: String,
       unique: true,
       required: true,
-      verified: Boolean,
+    },
+    isVerified: {
+      type: Boolean,
       default: false,
     },
     password: {
@@ -45,5 +46,15 @@ const UserSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+export const validate = (user) => {
+  const schema = Joi.object({
+    username: Joi.string().required(),
+    email: Joi.string().email().required(),
+    password: Joi.string().required(),
+  });
+
+  return schema.validate(user);
+};
 
 export default mongoose.model("User", UserSchema);
