@@ -47,14 +47,6 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export const validate = (user) => {
-  const schema = Joi.object({
-    username: Joi.string().required(),
-    email: Joi.string().email().required(),
-    password: Joi.string().required(),
-  });
 
-  return schema.validate(user);
-};
 
 export default mongoose.model("User", UserSchema);

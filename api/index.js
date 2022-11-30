@@ -4,6 +4,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 
 // module
+
 import userRoute from "./routes/users.js";
 import authRoute from "./routes/auth.js";
 import dbConnection from "./utils/db.js";
@@ -14,7 +15,7 @@ const app = express();
 
 // middleware
 app.use(express.json());
-app.use(morgan("common"));
+// app.use(morgan("common"));
 
 // routes
 app.use("/api/users", userRoute);
