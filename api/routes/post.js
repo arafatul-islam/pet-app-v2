@@ -5,6 +5,7 @@ import {
   deletePost,
   getAPost,
   likeAPost,
+  getTimeline,
 } from "./../controllers/post.js";
 const router = express.Router();
 
@@ -13,7 +14,7 @@ router.put("/updatepost/:postid", updatePost);
 router.delete("/deletepost/:postid", deletePost);
 
 router.get("/getapost/:postid", getAPost);
-// router.get("/gettimeline/:profileownerid", getTimeline);
+router.get("/gettimeline/all", getTimeline);
 
 router.put("/likes/:likerid/:postid", likeAPost);
 

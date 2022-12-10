@@ -1,4 +1,5 @@
 import Post from "../models/Post.js";
+import User from "../models/User.js";
 
 export const createPost = async (req, res) => {
   const post = new Post(req.body);
@@ -68,19 +69,18 @@ export const getAPost = async (req, res) => {
     return res.status(404).json("post not found");
   }
 };
-// export const getTimeline = async (req, res) => {
-//   try {
-//     const currentUserPosts = await Post.find({ userId: req.body.userId });
+export const getTimeline = async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.body.userId);
+    const userPosts = await Post.find({ userId: currentUser._id });
+    const friendPosts = await Promise.all(
+      currentUser.followings.map((friendId) => {
+        return Post.find({ userId: friendId });
+      })
+    );
 
-//     if (req.body.userId === req.params.profileownerid) {
-//       return res.status(200).json(currentUserPosts);
-//     } else {
-//       const friendPosts = await Promise.all(
-//         c
-//       );
-//       return res.status(200).json(friendPosts);
-//     }
-//   } catch (error) {
-//     return res.status(404).json("operation failed");
-//   }
-// };
+    return res.status(200).json(userPosts.concat(...friendPosts));
+  } catch (error) {
+    return res.status(404).json("operation failed");
+  }
+};
