@@ -3,7 +3,7 @@ import Topbar from "../../components/topbar/topbar";
 const Homepage = (props) => {
   return (
     <>
-      <Topbar />
+     this is home page 
     </>
   );
 };

@@ -1,0 +1,8 @@
+.communityFeed{
+    flex: 6;
+    border: 1px solid;
+    height:83.2vh;
+}
+.communityFeedWrapper{
+    padding: 20px;
+}
