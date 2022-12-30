@@ -1,9 +1,6 @@
-.footer{
-   
-   bottom: 0;
-   position: absolute;
-   width: 100vw;
-   height: 50px;
-   background-color: rgb(90, 201, 201);
-   color: white;
+.footer {
+  width: 100vw;
+  height: 50px;
+  background-color: rgb(90, 201, 201);
+  color: white;
 }

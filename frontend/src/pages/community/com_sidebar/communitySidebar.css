@@ -1,40 +1,37 @@
-.communitySidebar{
-    flex: 3;
-    border: 1px solid;
-    height: 83.2vh; 
-    overflow-y: scroll;
-    
+.communitySidebar {
+  flex: 3;
+
+  /* height: 83.2vh;  */
+  overflow-y: scroll;
 }
-::-webkit-scrollbar{
-    width: 15px;
+::-webkit-scrollbar {
+  width: 15px;
 }
-::-webkit-scrollbar-track{
-    background-color: #f1f1f1;
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
 }
-::-webkit-scrollbar-thumb{
-    background-color: rgb(165, 165, 165);
+::-webkit-scrollbar-thumb {
+  background-color: rgb(165, 165, 165);
 }
-.communitySidebarWrapper{
-    padding: 20px;
-    
+.communitySidebarWrapper {
+  padding: 20px;
 }
 
-.communitySidebarList{
-    padding: 0;
-    margin: 0;
-    list-style: none;
+.communitySidebarList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
-.communitySidebarListItem{
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    cursor: pointer;
+.communitySidebarListItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  cursor: pointer;
 }
-.cimmunitySidebarListItemIcon{
-    margin-right: 15px;
-   
+.cimmunitySidebarListItemIcon {
+  margin-right: 15px;
 }
-.communitySidebarListText{
- 
+.communitySidebarListText {
 }
-.communitySidebarHr{}
+.communitySidebarHr {
+}
